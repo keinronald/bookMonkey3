@@ -1,0 +1,37 @@
+<div *ngIf="book">
+  <h1>{{ book.title }}</h1>
+  <h3 *ngIf="book.subtitle">{{ book.subtitle }}</h3>
+  <div class="ui divider"></div>
+  <div class="ui grid">
+    <div class="four wide column">
+      <h4>Autoren</h4>
+      <ng-container *ngFor="let author of book.authors">
+        {{ author }}<br>
+      </ng-container>
+    </div>
+    <div class="four wide column">
+      <h4>ISBN</h4>
+      {{ book.isbn }}
+    </div>
+    <div class="four wide column">
+      <h4>Erschienen</h4>
+      {{ book.published }}
+    </div>
+    <div class="four wide column">
+      <h4>Rating</h4>
+      <i *ngFor="let r of getRating(book.rating)"
+         class="yellow star icon"></i>
+    </div>
+  </div>
+  <h4>Beschreibung</h4>
+  <p>{{ book.description }}</p>
+  <div class="ui small images">
+    <img *ngFor="let thumbnail of book.thumbnails"
+         [alt]="thumbnail.title"
+         [src]="thumbnail.url">
+  </div>
+  <button (click)="showBookList()"
+          class="ui red button">
+    Zurück zur Buchlister
+  </button>
+</div>
