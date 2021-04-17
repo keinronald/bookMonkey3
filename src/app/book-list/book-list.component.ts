@@ -8,12 +8,12 @@ import {BookStoreService} from '../shared/book-store.service';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  books!: Book[];
+  books?: Book[];
 
   constructor(private bs: BookStoreService) {
   }
 
   ngOnInit(): void {
-    this.books = this.bs.getAll();
+    this.bs.getAll().subscribe(res => this.books = res);
   }
 }

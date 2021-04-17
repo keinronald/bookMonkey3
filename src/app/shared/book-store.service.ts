@@ -1,48 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Book} from './book';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookStoreService {
-  books!: Book[];
+  private api = 'https://api3.angular-buch.com';
 
-  constructor() {
-    this.books = [
-      {
-        isbn: '987654321',
-        title: 'Angular',
-        authors: ['Author 1', 'Author 2', 'Author 3'],
-        published: new Date(2019, 4, 30),
-        subtitle: 'Grundlagen, fortgeschrittene THemen und Best Practices - mit NativeScritp und NgRx',
-        rating: 5,
-        thumbnails: [{
-          url: 'https://ng-buch.de/buch1.jpg',
-          title: 'Buchcover'
-        }],
-        description: 'Die Authoren führen Sie ...',
-      },
-      {
-        isbn: '123456789',
-        title: 'React',
-        authors: ['Author 1', 'Author 2', 'Author 3'],
-        published: new Date(2019, 4, 30),
-        subtitle: 'Die praktische Einführung in React',
-        rating: 5,
-        thumbnails: [{
-          url: 'https://ng-buch.de/buch2.jpg',
-          title: 'Buchcover'
-        }],
-        description: 'Die Authoren führen Sie ...',
-      },
-    ];
+  constructor(public http: HttpClient) {
   }
 
-  getAll(): Book[] {
-    return this.books;
+  getAll(): Observable<Book[]> {
+    return this.http.get<any[]>(`${this.api}/books`);
   }
 
-  getSingle(isbn: string | null): Book | undefined {
-    return this.books.find(book => book.isbn === isbn);
+  getSingle(isbn: string | null): Observable<Book> {
+    return this.http.get<any>(`${this.api}/book/${isbn}`);
+  }
+
+  remove(isbn: string | null): Observable<any> {
+    return this.http.delete(
+      `${this.api}/book/${isbn}`,
+      {responseType: 'text'}
+    );
+
   }
 }
