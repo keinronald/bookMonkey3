@@ -1,7 +1,4 @@
-import { Component } from '@angular/core';
-import {Book} from './shared/book';
-
-type ViewState = 'list' | 'details';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +6,4 @@ type ViewState = 'list' | 'details';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'bookMonkey3';
-  book?: Book;
-  viewState: ViewState = 'list';
-
-  showList(): void {
-    this.viewState = 'list';
-  }
-
-  showDetails(book: Book): void {
-    this.book = book;
-    this.viewState = 'details';
-  }
 }

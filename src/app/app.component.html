@@ -1,8 +1,14 @@
-<app-book-list (showDetailsEvent)="showDetails($event)"
-               *ngIf="viewState === 'list'"></app-book-list>
-
-<app-book-details (showListEvent)="showList()"
-                  *ngIf="viewState === 'details' && book !== undefined"
-                  [book]="book"></app-book-details>
+<div class="ui menu">
+  <a class="item"
+     routerLink="home"
+     routerLinkActive="active">
+    Home
+  </a>
+  <a class="item"
+     routerLink="books"
+     routerLinkActive="active">
+    Bücher
+  </a>
+</div>
 
 <router-outlet></router-outlet>

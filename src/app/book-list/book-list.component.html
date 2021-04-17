@@ -1,6 +1,6 @@
 <div class="ui middle aligned selection divided list">
-  <app-book-list-item (click)="showDetails(book)"
-                      *ngFor="let book of books"
+  <app-book-list-item *ngFor="let book of books"
                       [book]="book"
+                      [routerLink]="book.isbn"
                       class="item"></app-book-list-item>
 </div>
