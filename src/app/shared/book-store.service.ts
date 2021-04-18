@@ -24,7 +24,20 @@ export class BookStoreService {
         return booksRaw.map(b => BookFactory.fromRaw(b));
       }),
       catchError(this.errorHandler)
-  );
+    );
+  }
+
+
+  getAllSearch(searchTerm: any): Observable<Book[]> {
+    return this.http.get<BookRaw[]>(
+      `${this.api}/books/search/${searchTerm}`
+    ).pipe(
+      retry(3),
+      map(booksRaw => {
+        return booksRaw.map(b => BookFactory.fromRaw(b));
+      }),
+      catchError(this.errorHandler)
+    );
   }
 
   getSingle(isbn: string | null): Observable<Book> {
