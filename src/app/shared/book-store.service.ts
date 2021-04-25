@@ -15,6 +15,16 @@ export class BookStoreService {
   constructor(public http: HttpClient) {
   }
 
+  create(book: Book): Observable<any> {
+    return this.http.post(
+      `${this.api}/book`,
+      book,
+      {responseType: 'text'}
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
   getAll(): Observable<Book[]> {
     return this.http.get<BookRaw[]>(
       `${this.api}/books`
