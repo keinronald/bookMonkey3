@@ -15,6 +15,14 @@ export class BookStoreService {
   constructor(public http: HttpClient) {
   }
 
+  check(isbn: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `${this.api}/book/${isbn}/check`
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
   create(book: Book): Observable<any> {
     return this.http.post(
       `${this.api}/book`,
