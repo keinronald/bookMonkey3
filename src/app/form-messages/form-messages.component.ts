@@ -7,8 +7,7 @@ import {AbstractControl} from '@angular/forms';
   styleUrls: ['./form-messages.component.scss']
 })
 export class FormMessagesComponent implements OnInit {
-
-  @Input() control!: AbstractControl;
+  @Input() control!: AbstractControl | null;
   @Input() controlName!: string;
 
   private allMessages: { [index: string]: any } = {

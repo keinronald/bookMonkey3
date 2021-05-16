@@ -60,6 +60,16 @@ export class BookStoreService {
     );
   }
 
+  update(book: Book): Observable<any> {
+    return this.http.put(
+      `${this.api}/book/${book.isbn}`,
+      book,
+      {responseType: 'text'}
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
   remove(isbn: string | null): Observable<any> {
     return this.http.delete(
       `${this.api}/book/${isbn}`,

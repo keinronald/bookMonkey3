@@ -10,11 +10,12 @@ import { HomeComponent } from './home/home.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import {TokenInterceptor} from './shared/token-interceptor';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {DateValueAccessorModule} from 'angular-date-value-accessor';
 import { BookFormComponent } from './book-form/book-form.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { FormMessagesComponent } from './form-messages/form-messages.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,14 @@ import { FormMessagesComponent } from './form-messages/form-messages.component';
     SearchComponent,
     BookFormComponent,
     CreateBookComponent,
-    FormMessagesComponent
+    FormMessagesComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    ReactiveFormsModule,
     DateValueAccessorModule
   ],
   providers: [
