@@ -1,7 +1,7 @@
 <h1>Buch bearbeiten</h1>
 
 <app-book-form
-  *ngIf="book"
+  *ngIf="book$ | async as book"
   (submitButton)="updateBook($event)"
   [book]="book"
   [editing]="true"

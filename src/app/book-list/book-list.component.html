@@ -1,14 +1,18 @@
 <div class="ui middle aligned selection divided list">
-  <app-book-list-item *ngFor="let book of books"
-                      [book]="book"
-                      [routerLink]="book.isbn"
-                      class="item"></app-book-list-item>
+  <ng-container *ngIf="books$ | async as books">
+    <app-book-list-item *ngFor="let book of books"
+                        [book]="book"
+                        [routerLink]="book.isbn"
+                        class="item"></app-book-list-item>
 
-  <div *ngIf="!books" class="ui active dimmer">
-    <div class="ui large text loader">Daten werden geladen...</div>
-  </div>
+    <p *ngIf="!books.length">
+      Es wurden noch keine Bücher eingetragen.
+    </p>
+  </ng-container>
 
-  <p *ngIf="books && !books.length">
-    Es wurden noch keine Bücher eingetragen.
-  </p>
+  <ng-template #loading>
+    <div class="ui active dimmer">
+      <div class="ui large text loader">Daten werden geladen...</div>
+    </div>
+  </ng-template>
 </div>
