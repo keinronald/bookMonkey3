@@ -1,5 +1,6 @@
 <img *ngIf="book.thumbnails && book.thumbnails[0] && book.thumbnails[0].url" [src]="book.thumbnails[0].url"
-     alt="book thumbnail" class="ui tiny image">
+     alt="book thumbnail" class="ui tiny image"
+     appZoom>
 <div class="content">
   <div class="header">{{ book.title }}</div>
   <div *ngIf="book.subtitle" class="description">
