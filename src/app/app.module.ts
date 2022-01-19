@@ -9,8 +9,6 @@ import { SearchComponent } from './search/search.component';
 import {TokenInterceptor} from './shared/token-interceptor';
 import {registerLocaleData} from '@angular/common';
 import localDe from '@angular/common/locales/de';
-import {BookModule} from './book/book.module';
-import {AdminModule} from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import {AdminModule} from './admin/admin.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    BookModule,
-    AdminModule
+    HttpClientModule
   ],
   providers: [
     {
