@@ -14,11 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'books',
-    loadChildren: './books/books.module#BooksModule'
+    loadChildren: () => import('./book/book.module').then(m => m.BookModule)
   },
   {
     path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule'
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   }
 ];
 
